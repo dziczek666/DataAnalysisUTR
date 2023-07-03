@@ -1,0 +1,18 @@
+trimmomatic PE -threads 5 -phred33 raw/SRR19969243_1.fastq.gz raw/SRR19969243_2.fastq.gz trimmed/SRR19969243_1.trimmed.fastq /dev/null trimmed/SRR19969243_2.trimmed.fastq /dev/null ILLUMINACLIP:TruSeq2_PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:5:20 MINLEN:100
+
+ 
+
+hisat2 -q -p 5 --reorder -t --rna-strandness RF --dta -x index/ -1 <myfq1_1.fq,myfq2_1.fq,etc> -2 <myfq1_2.fq,myfq2_2.fq,etc> | samtools view -F 0x4 -bS - | samtools sort - -o sorted.bam
+
+stringtie sorted.bam --rf -o stringtie.gtf -G file.gtf -p 5
+
+in container aptardi:
+aptardi --b sorted.bam --f hg38.fa --r stringtie.gtf --g name_aptardi.gtf --n model.hdf5 --t scale.pk --o output_dir
+
+---------
+
+featureCounts -p -O -T 5 -a DANE/SRR19969208.stringtie.gtf -o example_featureCounts_output.txt sorted_example_alignment.bam
+
+
+
+aptardi --b bam/SRR19969211.bam --f genomeFile/hg38.fa --r SRR19969211.stringtie.gtf --g SRR19969211.aptardi.gtf --n model.hdf5 --t scale.pk --o output_dir   
