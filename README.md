@@ -12,7 +12,9 @@ The following scripts are included in this repository:
 
 - `statistics.ipynb`: This script contains statistic tests used in analysis
 
-- `pca.ipynb`: This script used to reduced demension and examined clusters using PCA and t-SNE models 
+- `pca.ipynb`: This script used to reduced demension and examined clusters using PCA and t-SNE models
+
+- `DEG2.R`: This script to perform differencial expression analysis with visualisation
 
 - `functiion.R`: This script to perform funcional analysis using e.g. clusterProfiler
 
