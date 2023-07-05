@@ -16,7 +16,6 @@ The following scripts are included in this repository:
 
 - `functiion.R`: This script to perform funcional analysis using e.g. clusterProfiler
 
-- `adjustment.ipynb`: This script just to check some stuff
 
 
 
